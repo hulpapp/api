@@ -22,6 +22,6 @@ jobs:
         printf "${{secrets.RAILS_MASTER_KEY}}" > config/master.key
         gem install bundler
         bundle install --jobs 4 --retry 3
-        bundle exec rails development
+        bundle exec rails test
 
           
