@@ -12,7 +12,7 @@ class TokenController < ApplicationController
 
   def authorize
 
-    url = URI("#{@@domain}authorize?response_type=code&client_id=#{@@client_id}&audience=#{@@api_identifier}")
+    url = URI("#{@@domain}oauth/token")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
@@ -21,6 +21,8 @@ class TokenController < ApplicationController
 
     request = Net::HTTP::Post.new(url)
     request["content-type"] = 'application/json'
+    request.body = "{\"client_id\":\"#{@@client_id}}\",\"client_secret\":\"#{@@client_secret}\",\"audience\":\"#{@@api_identifier}\",\"grant_type\":\"client_credentials\"}"
+
 
 
     response = http.request(request)
