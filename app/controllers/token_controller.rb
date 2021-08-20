@@ -10,6 +10,11 @@ class TokenController < ApplicationController
   @@client_secret = (Rails.env.test? or Rails.env.development?) ? Rails.application.credentials.auth0_dev[:client_secret] : Rails.application.credentials.auth0_prod[:client_secret]
 
 
+  def temp_token
+    if Rails.env.development?
+      render json: {"access_token" => "Bearer #{Rails.application.credentials.temp_token}", }
+    end
+  end
   def authorize
     if params[:keyword] == "#{Rails.application.credentials.keyword}"
 

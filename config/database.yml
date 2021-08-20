@@ -6,10 +6,11 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 10 } %>
 
 development:
+  <<: *default
   adapter: postgresql
   encoding: unicode
   url: <%=Rails.application.credentials.dev_db! %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 10 } %>
+
 
 test:
   adapter: postgresql
