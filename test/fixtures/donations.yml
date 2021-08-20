@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyString
+  quantity: 1.5
+  position: MyString
+  destination: MyString
+
+two:
+  category: MyString
+  quantity: 1.5
+  position: MyString
+  destination: MyString
