@@ -15,7 +15,7 @@ class TokenController < ApplicationController
     url = URI("#{@@domain}authorize?response_type=code&client_id=#{@@client_id}&audience=#{@@api_identifier}")
 
     http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = false
+    http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 
