@@ -11,20 +11,25 @@ class TokenController < ApplicationController
 
 
   def authorize
+    if params[:keyword] == "#{Rails.application.credentials.keyword}"
 
-    url = URI("#{@@domain}oauth/token")
+      url = URI("#{@@domain}oauth/token")
 
-    http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    request = Net::HTTP::Post.new(url)
-    request["content-type"] = 'application/json'
-    request.body = "{\"client_id\":\"#{@@client_id}\",\"client_secret\":\"#{@@client_secret}\",\"audience\":\"#{@@api_identifier}\",\"grant_type\":\"client_credentials\"}"
+      request = Net::HTTP::Post.new(url)
+      request["content-type"] = 'application/json'
+      request.body = "{\"client_id\":\"#{@@client_id}\",\"client_secret\":\"#{@@client_secret}\",\"audience\":\"#{@@api_identifier}\",\"grant_type\":\"client_credentials\"}"
 
-    response = http.request(request)
+      response = http.request(request)
+      render json: response.read_body
+    else
 
-    render json: response.read_body
+      render json: 401
+
+      end
 
 
   end
