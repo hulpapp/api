@@ -18,12 +18,9 @@ class TokenController < ApplicationController
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-
     request = Net::HTTP::Post.new(url)
     request["content-type"] = 'application/json'
-    request.body = "{\"client_id\":\"#{@@client_id}}\",\"client_secret\":\"#{@@client_secret}\",\"audience\":\"#{@@api_identifier}\",\"grant_type\":\"client_credentials\"}"
-
-
+    request.body = "{\"client_id\":\"#{@@client_id}\",\"client_secret\":\"#{@@client_secret}\",\"audience\":\"#{@@api_identifier}\",\"grant_type\":\"client_credentials\"}"
 
     response = http.request(request)
 
