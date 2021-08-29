@@ -1,4 +1,4 @@
-class VolunteersController < ApplicationController
+class VolunteersController < SecuredController
   before_action :set_volunteer, only: [:show, :update, :destroy]
 
   # GET /volunteers
