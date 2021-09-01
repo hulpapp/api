@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :trainments
   resources :donations
 
+  post '/login' => 'session#login'
   get '/isalive', to: 'is_alive#index'
   get '/token/:keyword', to: 'token#authorize'
   get '/temp_token', to: 'token#temp_token'

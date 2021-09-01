@@ -46,6 +46,6 @@ class VolunteersController < SecuredController
 
     # Only allow a list of trusted parameters through.
     def volunteer_params
-      params.require(:volunteer).permit(:name, :email, :telephone, :cpf, :identity, :address_id, :type, :user_id)
+      params.require(:volunteer).permit(:name, :email, :telephone, :cpf, :identity,:user_role, :address_id, :user_id)
     end
 end
