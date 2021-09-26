@@ -1,12 +1,12 @@
 class AddressesController < SecuredController
   before_action :set_address, only: [:show, :update, :destroy]
 
-  # GET /addresses
-  def index
-    @addresses = Address.all
-
-    render json: @addresses
-  end
+  # # GET /addresses
+  # def index
+  #   @addresses = Address.all
+  #
+  #   render json: @addresses
+  # end
 
   # GET /addresses/1
   def show
