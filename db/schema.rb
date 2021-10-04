@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_03_122410) do
+ActiveRecord::Schema.define(version: 2021_10_04_135054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -173,7 +173,6 @@ ActiveRecord::Schema.define(version: 2021_10_03_122410) do
     t.string "cpf"
     t.string "identity"
     t.bigint "address_id", null: false
-    t.string "user_role"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
