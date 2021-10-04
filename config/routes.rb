@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   post '/login' => 'session#login'
   get '/isalive', to: 'is_alive#index'
-  get '/token/:keyword', to: 'token#authorize'
+  post '/token/:keyword', to: 'token#login'
   get '/temp_token', to: 'token#temp_token'
 
 end

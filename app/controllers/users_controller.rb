@@ -1,6 +1,6 @@
 require 'bcrypt'
 
-class UsersController < SecuredController
+class UsersController < ApplicationController
   include BCrypt
   before_action :set_user, only: [:show, :update, :destroy]
 
@@ -54,6 +54,6 @@ class UsersController < SecuredController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :password_digest)
+      params.permit(:email, :password, :password_confirmation)
     end
 end
