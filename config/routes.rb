@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get '/roles/events/:event_id', to: 'roles#role_by_event'
 
 
+  post '/signup', to: 'session#signup'
   get '/isalive', to: 'is_alive#index'
   post '/token/:keyword', to: 'token#login'
   get '/temp_token', to: 'token#temp_token'
