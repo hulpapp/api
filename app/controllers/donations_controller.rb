@@ -2,11 +2,11 @@ class DonationsController < SecuredController
   before_action :set_donation, only: [:show, :update, :destroy]
 
   # GET /donations
-  def index
-    @donations = Donation.all
-
-    render json: @donations
-  end
+  # def index
+  #   @donations = Donation.all
+  #
+  #   render json: @donations
+  # end
 
   # GET /donations/1
   def show

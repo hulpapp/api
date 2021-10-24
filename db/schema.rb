@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_04_135054) do
+ActiveRecord::Schema.define(version: 2021_10_24_135417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,12 +86,30 @@ ActiveRecord::Schema.define(version: 2021_10_04_135054) do
     t.index ["local_id"], name: "index_events_have_locals_on_local_id"
   end
 
+  create_table "events_have_teams", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.bigint "team_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_events_have_teams_on_event_id"
+    t.index ["team_id"], name: "index_events_have_teams_on_team_id"
+  end
+
   create_table "locals", force: :cascade do |t|
     t.string "name"
     t.bigint "address_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["address_id"], name: "index_locals_on_address_id"
+  end
+
+  create_table "manage_donations", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.bigint "donation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["donation_id"], name: "index_manage_donations_on_donation_id"
+    t.index ["event_id"], name: "index_manage_donations_on_event_id"
   end
 
   create_table "organizers", force: :cascade do |t|
@@ -188,15 +206,9 @@ ActiveRecord::Schema.define(version: 2021_10_04_135054) do
   add_foreign_key "drivers", "volunteers"
   add_foreign_key "events_have_locals", "events"
   add_foreign_key "events_have_locals", "locals"
+  add_foreign_key "events_have_teams", "events"
+  add_foreign_key "events_have_teams", "teams"
   add_foreign_key "locals", "addresses"
+  add_foreign_key "manage_donations", "donations"
+  add_foreign_key "manage_donations", "events"
   add_foreign_key "organizers", "volunteers"
-  add_foreign_key "presences", "volunteers"
-  add_foreign_key "roles", "events"
-  add_foreign_key "roles", "users"
-  add_foreign_key "routes_have_locals", "locals"
-  add_foreign_key "routes_have_locals", "routes"
-  add_foreign_key "teams_have_volunteers", "teams"
-  add_foreign_key "teams_have_volunteers", "volunteers"
-  add_foreign_key "volunteers", "addresses"
-  add_foreign_key "volunteers", "users"
-end

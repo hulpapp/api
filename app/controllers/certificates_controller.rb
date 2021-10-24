@@ -1,12 +1,12 @@
-class CertificatesController < ApplicationController
+class CertificatesController < SecuredController
   before_action :set_certificate, only: [:show, :update, :destroy]
 
   # GET /certificates
-  def index
-    @certificates = Certificate.all
-
-    render json: @certificates
-  end
+  # def index
+  #   @certificates = Certificate.all
+  #
+  #   render json: @certificates
+  # end
 
   # GET /certificates/1
   def show
