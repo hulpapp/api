@@ -212,3 +212,13 @@ ActiveRecord::Schema.define(version: 2021_10_24_135417) do
   add_foreign_key "manage_donations", "donations"
   add_foreign_key "manage_donations", "events"
   add_foreign_key "organizers", "volunteers"
+  add_foreign_key "presences", "volunteers"
+  add_foreign_key "roles", "events"
+  add_foreign_key "roles", "users"
+  add_foreign_key "routes_have_locals", "locals"
+  add_foreign_key "routes_have_locals", "routes"
+  add_foreign_key "teams_have_volunteers", "teams"
+  add_foreign_key "teams_have_volunteers", "volunteers"
+  add_foreign_key "volunteers", "addresses"
+  add_foreign_key "volunteers", "users"
+end
