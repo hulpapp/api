@@ -11,7 +11,7 @@ class TokenController < ApplicationController
     status = 401
 
     if !@user.nil?
-      if BCrypt::Password.new(@user.password_digest).is_password?(params[:password_digest])
+      if BCrypt::Password.new(@user.password_digest).is_password?(params[:password])
         status=201
         @roles = Role.where(user_id: @user.id)
         @volunteer = Volunteer.find_by_user_id(@user.id)

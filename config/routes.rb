@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: "is_alive#index"
+
   resources :events_have_teams
   resources :manage_donations
   resources :roles
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
 
   post '/signup', to: 'session#signup'
   get '/isalive', to: 'is_alive#index'
-  post '/token/:keyword', to: 'token#login'
+  post '/login', to: 'token#login'
   get '/temp_token', to: 'token#temp_token'
 
 end
