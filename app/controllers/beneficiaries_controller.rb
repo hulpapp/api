@@ -1,12 +1,12 @@
-class BeneficiariesController < ApplicationController
+class BeneficiariesController < SecuredController
   before_action :set_beneficiary, only: [:show, :update, :destroy]
 
   # GET /beneficiaries
-  def index
-    @beneficiaries = Beneficiary.all
-
-    render json: @beneficiaries
-  end
+  # def index
+  #   @beneficiaries = Beneficiary.all
+  #
+  #   render json: @beneficiaries
+  # end
 
   # GET /beneficiaries/1
   def show

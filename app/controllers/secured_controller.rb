@@ -9,7 +9,6 @@ class SecuredController < ApplicationController
 
     begin
       @decoded = Jwt.decode(header)
-      puts @decoded
       @current_user = User.find(@decoded[:user_id])
     rescue ActiveRecord::RecordNotFound => e
       render json: { errors: e.message }, status: :unauthorized

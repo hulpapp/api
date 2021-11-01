@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root to: "is_alive#index"
+
+  resources :events_have_teams
+  resources :manage_donations
   resources :roles
   resources :routes_have_locals
   resources :events_have_locals
@@ -21,11 +25,13 @@ Rails.application.routes.draw do
   get '/roles/users/:user_id', to: 'roles#role_by_user'
   get '/roles/events/:event_id', to: 'roles#role_by_event'
 
+  get '/teams-by-events/:id', to: 'events_have_teams#show_teams_by_events'
+  get '/events-by-teams/:id', to: 'events_have_teams#show_events_by_teams'
 
 
-  post '/login' => 'session#login'
+  post '/signup', to: 'session#signup'
   get '/isalive', to: 'is_alive#index'
-  post '/token/:keyword', to: 'token#login'
+  post '/login', to: 'token#login'
   get '/temp_token', to: 'token#temp_token'
 
 end

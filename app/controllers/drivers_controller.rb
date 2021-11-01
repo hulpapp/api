@@ -1,4 +1,4 @@
-class DriversController < ApplicationController
+class DriversController < SecuredController
   before_action :set_driver, only: [:show, :update, :destroy]
 
   # GET /drivers
