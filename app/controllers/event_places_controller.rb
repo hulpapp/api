@@ -24,6 +24,13 @@ class EventPlacesController < SecuredController
     end
   end
 
+  def find_by_event
+    @event_places = EventPlace.where(event_id: params[:event_id])
+
+    render json: @event_places
+
+  end
+
   # PATCH/PUT /event_places/1
   def update
     if @event_place.update(event_place_params)
@@ -46,6 +53,6 @@ class EventPlacesController < SecuredController
 
     # Only allow a list of trusted parameters through.
     def event_place_params
-      params.require(:event_place).permit(:event_id, :placeid, :name, :address, :lat, :long)
+      params.permit(:event_id, :placeid, :name, :address, :lat, :long)
     end
 end

@@ -34,5 +34,7 @@ Rails.application.routes.draw do
   get '/isalive', to: 'is_alive#index'
   post '/login', to: 'token#login'
   get '/temp_token', to: 'token#temp_token'
+  
+  get '/event_places/:event_id', to: 'event_places#find_by_event'
 
 end
