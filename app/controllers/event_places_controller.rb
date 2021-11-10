@@ -1,3 +1,4 @@
+require 'json'
 class EventPlacesController < SecuredController
   before_action :set_event_place, only: [:show, :update, :destroy]
 
@@ -23,6 +24,29 @@ class EventPlacesController < SecuredController
       render json: @event_place.errors, status: :unprocessable_entity
     end
   end
+
+  def create_eventplaces
+
+    places_response =[]
+
+    event_places_params.as_json['_json'].each do | evpl|
+
+      unless evpl.nil?
+        @event_place = EventPlace.new(evpl)
+        if @event_place.save
+          places_response << @event_place
+        else
+          places_response << "The #{evpl} did not succeed"
+        end
+      end
+
+    end
+
+    render json: places_response
+
+  end
+
+
 
   def find_by_event
     @event_places = EventPlace.where(event_id: params[:event_id])
@@ -55,4 +79,8 @@ class EventPlacesController < SecuredController
     def event_place_params
       params.permit(:event_id, :placeid, :name, :address, :lat, :long)
     end
+
+  def event_places_params
+    params.permit( _json: [:event_id, :placeid, :name, :address, :lat, :long])
+  end
 end

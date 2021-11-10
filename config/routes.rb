@@ -29,12 +29,13 @@ Rails.application.routes.draw do
   get '/teams-by-events/:id', to: 'events_have_teams#show_teams_by_events'
   get '/events-by-teams/:id', to: 'events_have_teams#show_events_by_teams'
 
+  post '/create_eventplaces', to: 'event_places#create_eventplaces'
 
   post '/signup', to: 'session#signup'
   get '/isalive', to: 'is_alive#index'
   post '/login', to: 'token#login'
   get '/temp_token', to: 'token#temp_token'
-  
+
   get '/event_places/:event_id', to: 'event_places#find_by_event'
 
 end
