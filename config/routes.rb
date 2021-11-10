@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :event_places
   root to: "is_alive#index"
 
   resources :events_have_teams
