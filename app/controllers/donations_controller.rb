@@ -13,6 +13,19 @@ class DonationsController < SecuredController
     render json: @donation
   end
 
+  def create_donation_assoc_to_event
+    @donation = Donation.new(donation_params)
+
+    if @donation.save
+      @md = ManageDonation.create(event_id: params[:event_id], donation_id: @donation.id)
+      render json: @donation, status: :created, location: @donation
+    else
+      render json: @donation.errors, status: :unprocessable_entity
+    end
+
+
+  end
+
   # POST /donations
   def create
     @donation = Donation.new(donation_params)
@@ -46,6 +59,6 @@ class DonationsController < SecuredController
 
     # Only allow a list of trusted parameters through.
     def donation_params
-      params.require(:donation).permit(:category, :quantity, :position, :destination)
+      params.permit( :category, :quantity, :position, :destination)
     end
 end
