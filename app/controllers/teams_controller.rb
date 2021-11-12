@@ -33,6 +33,16 @@ class TeamsController < ApplicationController
     end
   end
 
+  # send event, return teams
+  def find_teams_by_event
+    @teamsByEvents = Team.where(event_id: params[:event_id])
+    if !@teamsByEvents.nil?
+      render json: @teamsByEvents
+    else
+      render json: "404"
+    end
+  end
+
   # DELETE /teams/1
   def destroy
     @team.destroy
@@ -46,6 +56,6 @@ class TeamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def team_params
-      params.require(:team).permit(:name)
+      params.require(:team).permit(:name, :event_id)
     end
 end

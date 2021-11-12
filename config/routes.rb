@@ -31,6 +31,8 @@ Rails.application.routes.draw do
 
   post '/create_eventplaces', to: 'event_places#create_eventplaces'
 
+  get 'events/:event_id/teams', to: 'teams#find_teams_by_event'
+
   post '/signup', to: 'session#signup'
   get '/isalive', to: 'is_alive#index'
   post '/login', to: 'token#login'
