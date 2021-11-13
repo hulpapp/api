@@ -10,18 +10,14 @@ development:
   adapter: postgresql
   encoding: unicode
   url: <%=Rails.application.credentials.dev_db! %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 10 } %>
 
 
 test:
+  <<: *default
   adapter: postgresql
   encoding: unicode
-  user: myapp
-  database: myapp_test
-  host: localhost
-  password: 12345
-  port: 5432
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 10 } %>
-
+  url: <%=Rails.application.credentials.dev_db! %>
 
 
 production:
