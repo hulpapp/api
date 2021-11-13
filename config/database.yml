@@ -23,6 +23,7 @@ test:
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 10 } %>
 
 
+
 production:
   adapter: postgresql
   encoding: unicode
