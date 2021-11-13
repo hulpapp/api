@@ -12,7 +12,7 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create address" do
     assert_difference('Address.count') do
-      post addresses_url, params: { address: { cep: @address.cep, city: @address.city, country: @address.country, number: @address.number, state: @address.state, street: @address.street } }, as: :json
+      post addresses_url, params: { address: { cep: @address.cep, city: @address.city, number: @address.number, state: @address.state, street: @address.street } }, as: :json
     end
 
     assert_response 201

@@ -15,10 +15,10 @@ class SessionController < ApplicationController
       @address = Address.create(
         cep: user_params[:cep],
         street: user_params[:street],
+        neighborhood: user_params[:neighborhood],
         number: user_params[:number],
         city: user_params[:city],
-        state: user_params[:state],
-        country: user_params[:country])
+        state: user_params[:state])
 
       @volunteer = Volunteer.find_by_user_id(@user.id)
       if @volunteer.nil?
@@ -43,6 +43,18 @@ class SessionController < ApplicationController
   end
 
   def user_params
-    params.permit(:email, :password, :password_confirmation, :name, :telephone, :cpf, :identity, :cep, :street, :number, :city, :state, :country)
+    params.permit(:email,
+                  :password,
+                  :password_confirmation,
+                  :name,
+                  :telephone,
+                  :cpf,
+                  :identity,
+                  :cep,
+                  :street,
+                  :number,
+                  :city,
+                  :state,
+                  :neighborhood)
   end
 end

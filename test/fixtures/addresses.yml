@@ -6,7 +6,6 @@ one:
   number: 1
   city: MyString
   state: MyString
-  country: MyString
 
 two:
   cep: MyString
@@ -14,4 +13,3 @@ two:
   number: 1
   city: MyString
   state: MyString
-  country: MyString
