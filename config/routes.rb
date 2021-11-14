@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get '/events-by-teams/:id', to: 'events_have_teams#show_events_by_teams'
 
   post '/create_eventplaces', to: 'event_places#create_eventplaces'
+  post '/team_have_vol', to: 'teams_have_volunteers#create_temhvol'
   get '/events/:event_id/places', to: 'event_places#find_by_event'
 
   get 'events/:event_id/teams', to: 'teams#find_teams_by_event'
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
   get '/event_places/:event_id', to: 'event_places#find_by_event'
 
   post '/donations/event/:event_id', to: 'donations#create_donation_assoc_to_event'
+
 
   get '/generate_report/:event_id', to: 'report#generate_report'
 end
