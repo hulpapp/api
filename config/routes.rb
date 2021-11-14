@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get '/events-by-teams/:id', to: 'events_have_teams#show_events_by_teams'
 
   post '/create_eventplaces', to: 'event_places#create_eventplaces'
+  get '/events/:event_id/places', to: 'event_places#find_by_event'
 
   get 'events/:event_id/teams', to: 'teams#find_teams_by_event'
 

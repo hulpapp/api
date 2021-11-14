@@ -15,8 +15,11 @@ class EventsController < SecuredController
 
   # POST /events
   def create
+    header = request.headers['Authorization']
+    header = header.split(' ').last if header
+    @decoded = Jwt.decode(header)
     @event = Event.new(event_params)
-
+    @event.user_id = @decoded[:user_id]
     if @event.save
       render json: @event, status: :created, location: @event
     else
