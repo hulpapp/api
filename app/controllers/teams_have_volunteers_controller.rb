@@ -24,6 +24,27 @@ class TeamsHaveVolunteersController < ApplicationController
     end
   end
 
+  def create_temhvol
+
+    teamshv_response =[]
+
+    teams_h_vol_params.as_json['_json'].each do | thv|
+
+      unless thv.nil?
+        @teamshv_response = TeamsHaveVolunteer.new(thv)
+        if @teamshv_response.save
+          teamshv_response << @teamshv_response
+        else
+          teamshv_response << "The #{thv} did not succeed"
+        end
+      end
+
+    end
+
+    render json: teamshv_response
+
+  end
+
   # PATCH/PUT /teams_have_volunteers/1
   def update
     if @teams_have_volunteer.update(teams_have_volunteer_params)
@@ -47,5 +68,10 @@ class TeamsHaveVolunteersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def teams_have_volunteer_params
       params.require(:teams_have_volunteer).permit(:team_id, :volunteer_id)
+    end
+
+
+    def teams_h_vol_params
+      params.permit( _json: [:team_id, :volunteer_id])
     end
 end
