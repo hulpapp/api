@@ -46,6 +46,6 @@ class BeneficiariesController < SecuredController
 
     # Only allow a list of trusted parameters through.
     def beneficiary_params
-      params.require(:beneficiary).permit(:name, :document, :address_id, :birthDate)
+      params.require(:beneficiary).permit(:name, :document, :birthDate)
     end
 end

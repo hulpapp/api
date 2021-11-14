@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_14_123921) do
+ActiveRecord::Schema.define(version: 2021_11_14_212900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,11 +29,9 @@ ActiveRecord::Schema.define(version: 2021_11_14_123921) do
   create_table "beneficiaries", force: :cascade do |t|
     t.string "name"
     t.string "document"
-    t.bigint "address_id", null: false
     t.string "birthDate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["address_id"], name: "index_beneficiaries_on_address_id"
   end
 
   create_table "certificates", force: :cascade do |t|
@@ -227,7 +225,6 @@ ActiveRecord::Schema.define(version: 2021_11_14_123921) do
     t.index ["volunteer_id"], name: "index_volunter_has_events_on_volunteer_id"
   end
 
-  add_foreign_key "beneficiaries", "addresses"
   add_foreign_key "certificates", "events"
   add_foreign_key "certificates", "organizers"
   add_foreign_key "certificates", "presences"
