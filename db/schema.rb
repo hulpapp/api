@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_13_180857) do
+ActiveRecord::Schema.define(version: 2021_11_14_123921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 2021_11_13_180857) do
     t.string "destination"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_donations_on_event_id"
   end
 
   create_table "drivers", force: :cascade do |t|
@@ -174,6 +176,7 @@ ActiveRecord::Schema.define(version: 2021_11_13_180857) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "event_id", null: false
+    t.integer "responsible_id"
     t.index ["event_id"], name: "index_teams_on_event_id"
   end
 
@@ -229,6 +232,7 @@ ActiveRecord::Schema.define(version: 2021_11_13_180857) do
   add_foreign_key "certificates", "organizers"
   add_foreign_key "certificates", "presences"
   add_foreign_key "certificates", "volunteers"
+  add_foreign_key "donations", "events"
   add_foreign_key "drivers", "volunteers"
   add_foreign_key "event_places", "events"
   add_foreign_key "events", "users"

@@ -59,6 +59,6 @@ class DonationsController < SecuredController
 
     # Only allow a list of trusted parameters through.
     def donation_params
-      params.permit( :category, :quantity, :position, :destination)
+      params.permit( :event_id, :category, :quantity, :position, :destination)
     end
 end

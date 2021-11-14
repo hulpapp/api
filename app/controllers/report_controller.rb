@@ -1,5 +1,5 @@
 require 'json'
-class ReportController < SecuredController
+class ReportController < ApplicationController
 
   def generate_report
     @event = Event.find_by(id: params[:event_id])
