@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   get '/events/:event_id/places', to: 'event_places#find_by_event'
 
   get 'events/:event_id/teams', to: 'teams#find_teams_by_event'
+  get '/teams-by-responsible/:responsible_id', to: 'teams#find_teams_by_responsible'
+
 
   post '/signup', to: 'session#signup'
   get '/isalive', to: 'is_alive#index'
