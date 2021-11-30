@@ -1,4 +1,4 @@
-class DonationsController < ApplicationController
+class DonationsController < SecuredController
   before_action :set_donation, only: [:show, :update, :destroy]
 
   # GET /donations
