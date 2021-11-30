@@ -1,4 +1,4 @@
-class DonationsController < SecuredController
+class DonationsController < ApplicationController
   before_action :set_donation, only: [:show, :update, :destroy]
 
   # GET /donations
@@ -22,8 +22,20 @@ class DonationsController < SecuredController
     else
       render json: @donation.errors, status: :unprocessable_entity
     end
+  end
 
 
+  # GET and group by category and destination
+  def find_donation_quantities_by_event
+    @donations = Donation.where(event_id: params[:event_id])
+                         .group("category","destination")
+                         .sum("quantity")
+
+    if !@donations.nil?
+      render json: @donations
+    else
+      render json: "404"
+    end
   end
 
   # POST /donations

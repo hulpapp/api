@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   get '/event_places/:event_id', to: 'event_places#find_by_event'
 
   post '/donations/event/:event_id', to: 'donations#create_donation_assoc_to_event'
-
+  get '/donations/find-by-event/:event_id', to: 'donations#find_donation_quantities_by_event'
 
   get '/generate_report/:event_id', to: 'report#generate_report'
 end
