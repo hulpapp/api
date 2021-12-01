@@ -13,6 +13,27 @@ class PresencesController < ApplicationController
     render json: @presence
   end
 
+  #GET by volunteer and event
+  def find_presence_by_volunteer_and_event
+
+    @presence = Presence.where(volunteer_id: params[:volunteer_id], event_id: params[:event_id])
+
+      if !@presence.nil?
+        @vol = Volunteer.find params[:volunteer_id]
+        @event = Event.find params[:event_id]
+
+        render json: {
+          volunteer: @vol.as_json,
+          event: @event.as_json,
+          date: @presence[0].date,
+          startDate: @presence[0].startDate,
+          endDate:@presence[0].endDate
+        }
+      else
+        render json: "404"
+      end
+  end
+
   # POST /presences
   def create
     @presence = Presence.new(presence_params)
@@ -46,6 +67,6 @@ class PresencesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def presence_params
-      params.require(:presence).permit(:date, :startDate, :endDate, :volunteer_id)
+      params.require(:presence).permit(:date, :startDate, :endDate, :volunteer_id, :event_id)
     end
 end

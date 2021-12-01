@@ -42,6 +42,8 @@ Rails.application.routes.draw do
   post '/login', to: 'token#login'
   get '/temp_token', to: 'token#temp_token'
 
+  get '/presences/event/:event_id/volunteer/:volunteer_id', to: 'presences#find_presence_by_volunteer_and_event'
+
   get '/event_places/:event_id', to: 'event_places#find_by_event'
 
   post '/donations/event/:event_id', to: 'donations#create_donation_assoc_to_event'

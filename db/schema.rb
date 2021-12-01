@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_14_212900) do
+ActiveRecord::Schema.define(version: 2021_12_01_105324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,6 +141,8 @@ ActiveRecord::Schema.define(version: 2021_11_14_212900) do
     t.bigint "volunteer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "event_id", null: false
+    t.index ["event_id"], name: "index_presences_on_event_id"
     t.index ["volunteer_id"], name: "index_presences_on_volunteer_id"
   end
 
@@ -241,6 +243,7 @@ ActiveRecord::Schema.define(version: 2021_11_14_212900) do
   add_foreign_key "manage_donations", "donations"
   add_foreign_key "manage_donations", "events"
   add_foreign_key "organizers", "volunteers"
+  add_foreign_key "presences", "events"
   add_foreign_key "presences", "volunteers"
   add_foreign_key "roles", "events"
   add_foreign_key "roles", "users"
