@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# ruby '>=2.7.0'
+ruby '>=3.0.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 7.0.0'
@@ -29,7 +29,7 @@ gem 'rswag', github: 'rswag/rswag', branch: 'master'
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'rswag-specs'
+  # gem 'rswag-specs'
 end
 
 group :development, :test do
@@ -40,7 +40,7 @@ end
 group :development do
   gem 'listen', '~> 3.3'
   gem 'ruby-debug-ide', '~> 0.7.2'
-  gem 'debase'
+  gem 'debase', '~> 0.2.5.beta2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
