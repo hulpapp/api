@@ -7,7 +7,13 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "github.io", 'localhost:3000', '127.0.0.1:3000'
+    #TODO UNCOMMENT
+    # origins Rails.application.credentials.hosts.remote,
+    #         "#{Rails.application.credentials.hosts.local}:3000", '127.0.0.1:3000',
+    #         "#{Rails.application.credentials.hosts.local}:4200", '127.0.0.1:4200'
+
+    #TODO COMMENT
+    origins "*"
 
     resource "*",
       headers: :any,
