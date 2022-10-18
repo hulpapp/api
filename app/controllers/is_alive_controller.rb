@@ -1,4 +1,4 @@
-class IsAliveController < SecuredController
+class IsAliveController < ApplicationController
   def index
     render json: 200
   end
