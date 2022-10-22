@@ -7,8 +7,16 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
+    origins "*"
+    #TODO UNCOMMET.
+    # if Rails.env.production?
+    #   origins "hulpapp.github.io"
+    # end
+    #
+    # if Rails.env.development?
+    #   origins "*"
+    # end
 
-    origins "hulpapp.github.io"
 
     resource "*",
       headers: :any,
