@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_12_111459) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_26_021424) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -107,6 +107,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_111459) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_events_have_teams_on_event_id"
     t.index ["team_id"], name: "index_events_have_teams_on_team_id"
+  end
+
+  create_table "gambis", force: :cascade do |t|
+    t.bigint "volunteer_id", null: false
+    t.bigint "event_id", null: false
+    t.string "supermercado"
+    t.datetime "horaEntrada"
+    t.datetime "horaSaida"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_gambis_on_event_id"
+    t.index ["volunteer_id"], name: "index_gambis_on_volunteer_id"
   end
 
   create_table "locals", force: :cascade do |t|
@@ -229,6 +241,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_111459) do
   add_foreign_key "events_have_locals", "locals"
   add_foreign_key "events_have_teams", "events"
   add_foreign_key "events_have_teams", "teams"
+  add_foreign_key "gambis", "events"
+  add_foreign_key "gambis", "volunteers"
   add_foreign_key "locals", "addresses"
   add_foreign_key "manage_donations", "donations"
   add_foreign_key "manage_donations", "events"
