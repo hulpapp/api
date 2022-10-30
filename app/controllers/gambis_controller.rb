@@ -33,6 +33,20 @@ class GambisController < SecuredController
     end
   end
 
+  def vol
+    @gambi = Gambi.find_by_volunteer_id params[:volunteer_id]
+    unless @gambi.nil?
+      render json: @gambi
+    end
+  end
+
+  def event
+    @gambi = Gambi.find_by_event_id params[:event_id]
+    unless @gambi.nil?
+      render json: @gambi
+    end
+  end
+
   # DELETE /gambis/1
   def destroy
     @gambi.destroy

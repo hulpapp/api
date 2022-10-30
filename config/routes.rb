@@ -40,6 +40,9 @@ Rails.application.routes.draw do
   get '/teams-by-responsible/:responsible_id', to: 'teams#find_teams_by_responsible'
 
 
+  get '/gambis/vol/:volunteer_id', to: 'gambis#vol'
+  get '/gambis/event/:event_id', to: 'gambis#event'
+
   post '/signup', to: 'session#signup'
   get '/isalive', to: 'is_alive#index'
   post '/login', to: 'token#login'
