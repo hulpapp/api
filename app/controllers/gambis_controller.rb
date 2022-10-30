@@ -38,6 +38,9 @@ class GambisController < SecuredController
     unless @gambi.nil?
       render json: @gambi
     end
+    render json: {
+      22 => "Bolsonaro"
+    }
   end
 
   def event
