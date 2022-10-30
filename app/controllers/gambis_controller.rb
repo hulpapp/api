@@ -63,6 +63,6 @@ class GambisController < SecuredController
 
     # Only allow a list of trusted parameters through.
     def gambi_params
-      params.require(:gambi).permit(:volunteer_id, :event_id, :supermercado, :horaEntrada, :horaSaida)
+      params.permit(:volunteer_id, :event_id, :supermercado, :horaEntrada, :horaSaida)
     end
 end
