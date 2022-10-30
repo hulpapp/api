@@ -39,7 +39,7 @@ class GambisController < SecuredController
       render json: @gambi
     end
     render json: {
-      22 => "Bolsonaro"
+      469 => "Não achei ninguém, Bro. Tome uma xícara de chá."
     }
   end
 
