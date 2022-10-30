@@ -34,13 +34,11 @@ class GambisController < SecuredController
   end
 
   def vol
-    @gambi = Gambi.find_by_volunteer_id params[:volunteer_id]
-    if @gambi.nil?
-      render json: {
-        469 => "Não achei ninguém, Bro. Tome uma xícara de chá."
-      }
+    @gambis = Gambi.find_by_volunteer_id params[:volunteer_id]
+    if @gambis.nil?
+      render 404
     else
-      render json: @gambi
+      render json: @gambis
     end
 
 
