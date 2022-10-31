@@ -15,7 +15,9 @@ class TokenController < ApplicationController
         status=201
         @roles = Role.where(user_id: @user.id)
         @volunteer = Volunteer.find_by_user_id(@user.id)
-        token = Jwt.encode({ user_id: @user.id, volunteer_id: @volunteer.id, roles: @roles.as_json})
+        token = Jwt.encode({ user_id: @user.id,
+                                   volunteer_id: @volunteer.id,
+                                   roles: @roles.as_json})
         render json: { token: token, exp: 24.hours.from_now
         }, status: :ok
 
