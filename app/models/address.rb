@@ -1,3 +1,3 @@
 class Address < ApplicationRecord
-  encrypts :cep, :street, :number, :city, :state , deterministic: true
+  encrypts :cep, :street, :city, :state , deterministic: true
 end
