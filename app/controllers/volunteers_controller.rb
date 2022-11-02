@@ -3,7 +3,10 @@ class VolunteersController < SecuredController
 
   # GET /volunteers
   def index
-    @volunteers = Volunteer.all
+    @@role =  @decoded[:roles][0][:role]
+    if @@role == 'ADMIN'
+      @volunteers = Volunteer.all
+    end
 
     render json: @volunteers
   end
