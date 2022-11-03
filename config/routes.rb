@@ -56,4 +56,7 @@ Rails.application.routes.draw do
   get '/donations/find-by-event/:event_id', to: 'donations#find_donation_quantities_by_event'
 
   get '/generate_report/:event_id', to: 'report#generate_report'
+
+  post '/forgot_password', to: 'forgot_password#redefine_password'
+
 end
