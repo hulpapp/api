@@ -8,7 +8,6 @@ class ForgotPasswordController < ApplicationController
       @@vol = Volunteer.find_by_user_id @@user
 
       if @@vol.cpf.eql? params[:cpf]
-        puts @@vol.cpf.eql? params[:cpf]
 
         @@user.update!( user_params)
         render json: {
