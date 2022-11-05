@@ -12,16 +12,16 @@ class ForgotPasswordController < ApplicationController
         @@user.update!( user_params)
         render json: {
           200 => "Usuario #{@@user.email} foi alterado com sucesso"
-        }
+        }, status: 200
       else
         render json: {
           300 => "CPF inválido"
-        }
+        }, status: 300
       end
     else
       render json: {
-        404 => "Usuário não encontrado ou não existe"
-      }
+        404 => "Usuário não encontrado ou não existe ou é o @freakln"
+      }, status: 404
     end
 
 
