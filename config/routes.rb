@@ -39,7 +39,6 @@ Rails.application.routes.draw do
   get 'events/:event_id/teams', to: 'teams#find_teams_by_event'
   get '/teams-by-responsible/:responsible_id', to: 'teams#find_teams_by_responsible'
 
-
   get '/gambis/vol/:volunteer_id', to: 'gambis#vol'
   get '/gambis/event/:event_id', to: 'gambis#event'
 
