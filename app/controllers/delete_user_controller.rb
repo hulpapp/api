@@ -14,7 +14,6 @@ class DeleteUserController < SecuredController
       end
 
 
-
       unless @@vol.nil?
         @@address_id =  @@vol.address_id
         Volunteer.destroy @@vol

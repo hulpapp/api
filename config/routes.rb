@@ -59,4 +59,6 @@ Rails.application.routes.draw do
 
   post '/forgot_password', to: 'forgot_password#redefine_password'
 
+  post '/delete_user', to: 'delete_user#deleteAllUserData'
+
 end

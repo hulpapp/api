@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema[7.0].define(version: 2022_10_26_021424) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
