@@ -2,11 +2,11 @@ class BeneficiariesController < SecuredController
   before_action :set_beneficiary, only: [:show, :update, :destroy]
 
   # GET /beneficiaries
-  # def index
-  #   @beneficiaries = Beneficiary.all
-  #
-  #   render json: @beneficiaries
-  # end
+  def index
+    @beneficiaries = Beneficiary.all
+
+    render json: @beneficiaries
+  end
 
   # GET /beneficiaries/1
   def show
@@ -46,6 +46,6 @@ class BeneficiariesController < SecuredController
 
     # Only allow a list of trusted parameters through.
     def beneficiary_params
-      params.require(:beneficiary).permit(:name, :document, :address_id, :birthDate)
+      params.require(:beneficiary).permit(:name, :document, :birthDate)
     end
 end

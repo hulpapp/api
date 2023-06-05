@@ -43,6 +43,16 @@ class TeamsController < ApplicationController
     end
   end
 
+  # send responsible, return teams
+  def find_teams_by_responsible
+    @teamsByResponsible = Team.where(responsible_id: params[:responsible_id])
+    if !@teamsByResponsible.nil?
+      render json: @teamsByResponsible
+    else
+      render json: "404"
+    end
+  end
+
   # DELETE /teams/1
   def destroy
     @team.destroy

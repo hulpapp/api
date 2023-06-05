@@ -2,19 +2,17 @@ require 'bcrypt'
 
 class UsersController < ApplicationController
   include BCrypt
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :destroy]
 
   # GET /users
-  def index
-    @users = User.all
-
-    render json: @users
-  end
+  # def index
+  #   @users = User.all
+  #
+  #   render json: @users
+  # end
 
   # GET /users/1
   def show
-
-
     render json: @user
   end
 

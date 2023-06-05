@@ -10,12 +10,14 @@ class TokenController < ApplicationController
     @user = User.find_by_email(params[:email])
     status = 401
 
-    if !@user.nil?
+    unless @user.nil?
       if @user&.authenticate(params[:password])
         status=201
         @roles = Role.where(user_id: @user.id)
         @volunteer = Volunteer.find_by_user_id(@user.id)
-        token = Jwt.encode({user_id: @user.id, volunteer_data: @volunteer.as_json, roles: @roles.as_json})
+        token = Jwt.encode({ user_id: @user.id,
+                                   volunteer_id: @volunteer.id,
+                                   roles: @roles.as_json})
         render json: { token: token, exp: 24.hours.from_now
         }, status: :ok
 

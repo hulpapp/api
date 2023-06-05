@@ -22,8 +22,20 @@ class DonationsController < SecuredController
     else
       render json: @donation.errors, status: :unprocessable_entity
     end
+  end
 
 
+  # GET and group by category and destination
+  def find_donation_quantities_by_event
+    @donations = Donation.where(event_id: params[:event_id])
+                         .group("category","destination")
+                         .sum("quantity")
+
+    if !@donations.nil?
+      render json: @donations
+    else
+      render json: "404"
+    end
   end
 
   # POST /donations
@@ -59,6 +71,6 @@ class DonationsController < SecuredController
 
     # Only allow a list of trusted parameters through.
     def donation_params
-      params.permit( :category, :quantity, :position, :destination)
+      params.permit( :event_id, :category, :quantity, :position, :destination)
     end
 end
